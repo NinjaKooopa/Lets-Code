@@ -16,10 +16,3 @@ class CaesarCipher:
     def decrypt_message(self, message):
         shifted_symbols = str.maketrans(self._symbols[self._key:] + self._symbols[:self._key], self._symbols)
         return(message.translate(shifted_symbols))
-
-c1 = CaesarCipher(key=5)
-e = c1.encrypt_message('HELLO WORLD')
-d = c1.decrypt_message(e)
-
-print('e: ' + e)
-print('d: ' + d)
