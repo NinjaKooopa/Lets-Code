@@ -9,10 +9,14 @@ class CaesarCipher:
 
         self._key = key
 
-    def encrypt_message(self, message):
+    def encrypt_message(self, message: str) -> str:
         shifted_symbols = str.maketrans(self._symbols, self._symbols[self._key:] + self._symbols[:self._key])
-        return(message.translate(shifted_symbols))
+        return(message.upper().translate(shifted_symbols))
     
-    def decrypt_message(self, message):
+    def decrypt_message(self, message: str) -> str:
         shifted_symbols = str.maketrans(self._symbols[self._key:] + self._symbols[:self._key], self._symbols)
-        return(message.translate(shifted_symbols))
+        return(message.upper().translate(shifted_symbols))
+
+if '__main__' == __name__:
+    c = CaesarCipher(key=5)
+    print(c.encrypt_message("Hello"))
